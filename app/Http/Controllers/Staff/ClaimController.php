@@ -1,0 +1,5 @@
+<?php
+namespace App\Http\Controllers\Staff;
+use App\Http\Controllers\Admin\ClaimController as BaseClaimController; use App\Models\Claim; use App\Models\FoundItem; use Illuminate\Http\RedirectResponse; use Illuminate\Http\Request; use Illuminate\View\View;
+class ClaimController extends BaseClaimController
+{ public function index(Request $request): View { $ids=FoundItem::where('staff_id',$request->user()->id)->pluck('id'); return view('claims.index',['role'=>'staff','claims'=>Claim::with(['student','foundItem.category'])->whereIn('found_item_id',$ids)->filtered($request->all())->latest()->paginate(15)->withQueryString()]); } public function show(Claim $claim): View { abort_if($claim->foundItem->staff_id !== auth()->id(),403); return view('claims.show',['role'=>'staff','claim'=>$claim->load(['student','foundItem.category','lostItem','reviewer'])]); } public function update(Request $request, Claim $claim): RedirectResponse { abort_if($claim->foundItem->staff_id !== $request->user()->id,403); return parent::update($request,$claim); } }

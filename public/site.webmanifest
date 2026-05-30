@@ -1,0 +1,24 @@
+{
+  "name": "TMC Lost and Found",
+  "short_name": "TMC",
+  "description": "Trinidad Municipal College Lost and Found",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F8F9FC",
+  "theme_color": "#1A3C6E",
+  "icons": [
+    {
+      "src": "/images/tmc-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/tmc-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

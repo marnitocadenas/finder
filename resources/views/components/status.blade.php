@@ -1,0 +1,1 @@
+@props(['status'])@php($map=['lost'=>'danger','found'=>'success','closed'=>'secondary','unclaimed'=>'warning text-dark','claimed'=>'success','turned_over'=>'primary','pending'=>'secondary','approved'=>'primary','rejected'=>'danger'])<span class="badge bg-{{ $map[$status] ?? 'secondary' }}">{{ str_replace('_',' ',Illuminate\Support\Str::title($status)) }}</span>
